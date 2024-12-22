@@ -9,8 +9,8 @@ interface MemoryChartProps {
 }
 
 export function MemoryChart({ total, used, usage }: MemoryChartProps) {
-  const usedValue = parseFloat(usage) || 0;
-  const freeValue = 100 - usedValue;
+  const usedValue = parseFloat(used) || 0;
+  const freeValue = parseFloat(total) - usedValue;
 
   const data = [
     { name: "Used", value: usedValue },

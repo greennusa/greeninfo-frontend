@@ -9,6 +9,7 @@ interface ServerCardProps {
     server: {
         url: string;
         name: string;
+        endpoint?: string;
 
     };
 }
@@ -21,7 +22,13 @@ export function ServerCard({ server }: ServerCardProps) {
 
     useEffect(() => {
         async function getData() {
-            const url = `${server.url}/usage`;
+            var url = `${server.url}`;
+
+            if(server.endpoint){
+                url = `${server.url}/${server.endpoint}`;
+            } else {
+                url = `${server.url}/usage`;
+            }
             try {
                 const response = await fetch(url);
                 if (!response.ok) {

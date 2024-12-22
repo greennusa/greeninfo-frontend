@@ -47,10 +47,10 @@ export function StorageChart({ storage }: StorageChartProps) {
           }}
           className="h-[300px] w-full"
         >
-          <ResponsiveContainer width="100%" height="100%">
+          <ResponsiveContainer className="w-full" height="100%">
             <BarChart data={data} layout="vertical">
               <XAxis type="number" domain={[0, 100]} />
-              <YAxis dataKey="name" type="category" width={40} />
+              <YAxis dataKey="name" type="category" width={100} />
               <ChartTooltip content={<ChartTooltipContent />} />
               <Bar dataKey="used" stackId="a" fill="var(--color-used)" />
               <Bar dataKey="free" stackId="a" fill="var(--color-free)" />
