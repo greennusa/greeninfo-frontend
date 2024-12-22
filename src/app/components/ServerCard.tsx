@@ -22,7 +22,7 @@ export function ServerCard({ server }: ServerCardProps) {
 
     useEffect(() => {
         async function getData() {
-            var url = `${server.url}`;
+            let url = `${server.url}`;
 
             if(server.endpoint){
                 url = `${server.url}/${server.endpoint}`;
