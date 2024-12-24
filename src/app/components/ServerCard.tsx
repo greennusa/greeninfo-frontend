@@ -10,6 +10,7 @@ interface ServerCardProps {
         url: string;
         name: string;
         endpoint?: string;
+        proxy?: string;
 
     };
 }
@@ -22,13 +23,17 @@ export function ServerCard({ server }: ServerCardProps) {
 
     useEffect(() => {
         async function getData() {
-            let url = `${server.url}`;
-
-            if(server.endpoint){
-                url = `${server.url}/${server.endpoint}`;
-            } else {
-                url = `${server.url}/usage`;
+            let url = ``;
+            if(server.proxy){
+                url = `${server.proxy}`;
             }
+            if(server.endpoint){
+                url += `${server.url}/${server.endpoint}`;
+            } else {
+                url += `${server.url}/usage`;
+            }
+
+            
             try {
                 const response = await fetch(url);
                 if (!response.ok) {
